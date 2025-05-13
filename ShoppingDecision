@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+
+public class ShoppingDecison {
+	static final boolean Discount_Available = true;
+	
+	public static void main(String[] args) {
+		System.out.println("Enter the price of the product :");
+		Scanner input = new Scanner(System.in);
+		int price = input.nextInt();
+		
+		if (isAffordable(price)) {
+			buyProduct();
+			
+		} else if (isLittleExpensive(price)) {
+			if (isDiscountAvailable()) {
+				buyProduct();
+			}else {
+				addThisProductOnWishlist();
+			}
+		}else {
+			dontBuyThisProduct();
+		}
+
+	}
+	private static void dontBuyThisProduct(){
+		System.out.println("I will not buy this product");
+		
+	}
+	private static void addThisProductOnWishlist(){
+		System.out.println("I will buy later this product");
+		
+	}
+	private static boolean isDiscountAvailable(){
+		return Discount_Available;
+		
+	}
+	private static boolean isLittleExpensive(int price){
+		if (500< price && price<1000) {
+			return true ;
+		}else {
+			return false;
+		}
+	}
+	
+	private static void  buyProduct() {
+		System.out.println("I will buy it");
+	}
+	private static boolean isAffordable(int price){
+		if(price <= 300){
+			return true;
+		} else {
+			return false;
+		}
+		}
+	}
